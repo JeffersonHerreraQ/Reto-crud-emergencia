@@ -1,8 +1,6 @@
 package com.jeffhq.Crud.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
@@ -25,5 +23,9 @@ public class Emergencia {
     @Id
     @GeneratedValue
     private Long codigo;
+
+    @ManyToOne(cascade = CascadeType.ALL) //para que si se elimina un registro, se elimine la relacion
+    @JoinColumn(name = "personal_id")
+    private Personal personal;
 
 }
